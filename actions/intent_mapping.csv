@@ -1,0 +1,9 @@
+intent,button,entities
+start,start conversation,
+inform,Tell me something,
+goodbye,Goodbye ,
+affirm,Yes,
+deny,No,
+out_of_scope,To say something strange,
+faq,to ask me something,
+request_pickup_car,to request a pickup car,

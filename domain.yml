@@ -1,0 +1,71 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- inform
+- start
+- faq
+- request_pickup_car
+- goodbye
+- affirm
+- deny
+- out_of_scope
+entities:
+- PERSON
+- car_type
+- guest_phone_number
+- pickup_location
+- pickup_time
+slots:
+  PERSON:
+    type: text
+  car_type:
+    type: text
+  guest_phone_number:
+    type: text
+  pickup_location:
+    type: text
+  pickup_time:
+    type: text
+  requested_slot:
+    type: unfeaturized
+responses:
+  utter_ask_PERSON:
+  - text: May I ask the guest name.
+  utter_ask_car_type:
+  - buttons:
+    - payload: /inform{"car_type":"4 seater"}
+      title: 4 seater
+    - payload: /inform{"car_type":"6 seater"}
+      title: 6 seater
+    text: Should I book a 4 seater or 6 seater car?
+  utter_ask_guest_phone_number:
+  - text: Please mention the phone number used for room booking.
+  utter_ask_pickup_location:
+  - text: What is the pickup location?
+  utter_ask_pickup_time:
+  - text: When should we pick you up from the location?
+  utter_goodbye:
+  - text: Bye
+  utter_greet:
+  - text: Hey! How are you?
+  utter_wrong_car_type:
+  - buttons:
+    - payload: /inform{"car_type":"4 seater"}
+      title: 4 seater
+    - payload: /inform{"car_type":"6 seater"}
+      title: 6 seater
+    text: Hey I did not comprehend that, please choose 1 of these.
+actions:
+- respond_faq
+- utter_ask_PERSON
+- utter_ask_car_type
+- utter_ask_guest_phone_number
+- utter_ask_pickup_location
+- utter_ask_pickup_time
+- utter_goodbye
+- utter_greet
+- utter_wrong_car_type
+- action_default_ask_affirmation
+forms:
+- guest_pickup_form
