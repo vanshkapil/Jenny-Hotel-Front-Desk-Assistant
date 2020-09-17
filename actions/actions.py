@@ -96,7 +96,7 @@ class GuestPickupForm(FormAction):
         loc = tracker.get_slot('pickup_location')
         time = tracker.get_slot('pickup_time')
         car = tracker.get_slot('car_type')
-        txt = "Done! Driver will reach "+loc +" before " + time + ". Your chosen car type is "+car+". Please keep you phone active."
+        txt = "Done! Driver will reach "+loc +" before " + time + ". Your chosen car type is "+car+". Please keep your phone active."
         # utter submit template
         dispatcher.utter_message(text=txt)
         return []
@@ -190,5 +190,82 @@ class ActionDefaultAskAffirmation(Action):
 
         return button_title.format(**entities)
 
-
+# class SPAbook(FormAction):
+#
+#     def name(self) -> Text:
+#         """Unique identifier of the form"""
+#
+#         return "spa_book_form"
+#
+#     @staticmethod
+#     def required_slots(tracker: Tracker) -> List[Text]:
+#         """A list of required slots that the form has to fill"""
+#
+#         return [
+#             "guest_num",
+#             "PERSON",
+#             "guest_phone_number","spa_date","spa_time","treatment_type","spa_session","pref_therapist"]
+#
+#     def slot_mappings(self) -> Dict[Text, Any]:
+#         return {
+#             "guest_num": [self.from_text()],
+#             "PERSON": [self.from_text()],
+#             # "PERSON": self.from_entity(entity="PERSON",intent=["inform"]),
+#                 "guest_phone_number": self.from_entity(entity="guest_phone_number", intent=["inform"]),
+#                 "spa_date": [self.from_text()],
+#             "spa_time": [self.from_text()],
+#                 # "pickup_time": self.from_entity(entity="pickup_time", intent=["inform"]),
+#                 "treatment_type": self.from_entity(entity="treatment_type", intent=["inform"]),
+#             "spa_session": self.from_entity(entity="spa_session", intent=["inform"]),
+#             "pref_therapist": self.from_entity(entity="pref_therapist", intent=["inform"])
+#                 }
+#
+#     def validate_guest_phone_number(
+#         self,
+#         value: Text,
+#         dispatcher: CollectingDispatcher,
+#         tracker: Tracker,
+#         domain: Dict[Text, Any],
+#     ) -> Dict[Text, Any]:
+#         """Validate phone value."""
+#
+#         # if re.match(r"^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$",value):
+#         if re.match(r"^[6-9]\d{9}$", value):
+#             return {"guest_phone_number": value}
+#         else:
+#             dispatcher.utter_message(template="utter_wrong_phone_number")
+#             return {"guest_phone_number": None}
+#
+#     def submit(
+#             self,
+#             dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any],
+#     ) -> List[Dict]:
+#         """Define what the form has to do
+#             after all required slots are filled"""
+#
+#         spapricematrix = {
+#             " Bamboo Massage - Relaxing 50 minutes":"$165",
+#             " Bamboo Massage - Deep Tissue 80 minutes": "$220",
+#             " Herbal Compression Massage 80 minutes": "$210",
+#             " Maternity/Prenatal Massage 50 minutes": "$135",
+#             " Salt Serenity - Relaxing 50 minutes": "$165",
+#             " Salt Serenity - Deep Tissue 50 minutes": "$220",
+#
+#
+#
+#         }
+#
+#
+#         guestNum = tracker.get_slot('guest_num')
+#         date = tracker.get_slot('spa_date')
+#         time = tracker.get_slot('spa_time')
+#         treatment = tracker.get_slot('treatment_type')
+#         spasession = tracker.get_slot('spa_session')
+#         spaprice = spapricematrix[treatment+spasession]
+#         txt = "Done! I have booked a " + time + " "+treatment+" slot for " + guestNum + " guests on "+date + ". Please visit our spa center on the lower ground floor."
+#         # utter submit template
+#         dispatcher.utter_message(text=txt)
+#         return []
 

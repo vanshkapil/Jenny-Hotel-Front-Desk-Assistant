@@ -48,7 +48,7 @@ responses:
   utter_goodbye:
   - text: Bye
   utter_greet:
-  - text: Hey! How are you?
+  - text: Hey! How may I help?
   utter_wrong_car_type:
   - buttons:
     - payload: /inform{"car_type":"4 seater"}
@@ -56,6 +56,9 @@ responses:
     - payload: /inform{"car_type":"6 seater"}
       title: 6 seater
     text: Hey I did not comprehend that, please choose 1 of these.
+  utter_wrong_phone_number:
+  - text: This phone number is invalid. Please enter a 10 digit number without country
+      code and spaces. (for eg 9563839843)  
 actions:
 - respond_faq
 - utter_ask_PERSON
@@ -67,5 +70,6 @@ actions:
 - utter_greet
 - utter_wrong_car_type
 - action_default_ask_affirmation
+- utter_wrong_phone_number
 forms:
 - guest_pickup_form

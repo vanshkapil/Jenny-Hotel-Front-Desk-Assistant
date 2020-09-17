@@ -48,3 +48,4 @@ tracker_store:
    db: "zuki.db"
    username: #<username used for authentication>
    password: #<password used for authentication>
+

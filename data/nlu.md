@@ -104,6 +104,27 @@
 - room service
 - roomservice
 
+## intent:faq/ask_whatservices
+- What services are there in the hotel
+- what is there to do in your hotel
+- what services do you provide
+- tell me about your services
+- what facilities are available 
+- what other services are there
+- What services do you provide at the hotel?
+- What are the services we have at hotels?
+- What services are you providing to hotel guests?
+- What services do you offer in hotel?
+- What kind of services does your hotel provide?
+- What would be the usual services at a hotel?
+
+## intent:faq/bookpool
+- I want to book pool session
+- book pool service for me
+- I want to go swimming
+- book pool for me
+- I want to use the pool
+
 ## intent:faq/ask_roomservice_lastorder
 - whats the last order time
 - when is the last order
@@ -132,6 +153,11 @@
 - I need a pickup car from [Airport](pickup_location)
 - send a pick up car please
 - need a pickup from [airport](pickup_location) at [11am](pickup_time)
+- Send a car to recieve me from [Airport](pickup_location)
+- Send a car to pick me up from [airport](pickup_location)
+- Send a car to meet me at [airport](pickup_location)
+- Can someone send me a car to recieve me from [airport](pickup_location) ?
+- Send a car to [Airport](pickup_location) to recieve me.
 
 ## intent:inform
 - my name is [Rob Smith](PERSON)
