@@ -10,26 +10,77 @@ intents:
 - affirm
 - deny
 - out_of_scope
+- greet
+- query_knowledge_base
 entities:
 - PERSON
 - car_type
 - guest_phone_number
 - pickup_location
 - pickup_time
+- mention
+- object_type
+- attribute
+- value
+- entity
+- guest_number
+- services
+- time_slot
+- user_email
 slots:
+  use_conf:
+    type: unfeaturized
+  user_email: 
+    type: unfeaturized
   PERSON:
     type: text
+  attribute:
+    type: unfeaturized
   car_type:
     type: text
+  guest_number:
+    type: unfeaturized
   guest_phone_number:
     type: text
+  image:
+    type: unfeaturized
+  knowledge_base_last_object:
+    type: unfeaturized
+  knowledge_base_last_object_type:
+    type: unfeaturized
+  knowledge_base_listed_objects:
+    type: unfeaturized
+  mention:
+    type: unfeaturized
+  object_type:
+    type: unfeaturized
   pickup_location:
     type: text
   pickup_time:
     type: text
+  price:
+    type: unfeaturized
   requested_slot:
     type: unfeaturized
+  services:
+    type: unfeaturized
+  time_slot:
+    type: unfeaturized
+  timings:
+    type: unfeaturized
+  value:
+    type: unfeaturized
 responses:
+  utter_ok:
+  - text: Okay
+  utter_finish_guide:
+  - text: "Demo Note: The information provided and services offered are 100% customisable.\
+      \ \n\n Thank you for trying out this demo."
+  utter_wrong_guest_number:
+  - text: That does not seem right. Type a number between 1-9
+  utter_wrong_time_slot:
+  - text: That does not look like the right time slot, say again Early morning, Late
+      morning or Afternoon
   utter_ask_PERSON:
   - text: May I ask the guest name.
   utter_ask_car_type:
@@ -49,6 +100,11 @@ responses:
   - text: Bye
   utter_greet:
   - text: Hey! How may I help?
+  utter_default:
+  - text: Sorry, I didnt understand that.
+  - text: Ugh! I don't know that.
+  utter_ask_rephrase:
+  - text: Could you please rephrase it for me.
   utter_wrong_car_type:
   - buttons:
     - payload: /inform{"car_type":"4 seater"}
@@ -58,7 +114,51 @@ responses:
     text: Hey I did not comprehend that, please choose 1 of these.
   utter_wrong_phone_number:
   - text: This phone number is invalid. Please enter a 10 digit number without country
-      code and spaces. (for eg 9563839843)  
+      code and spaces. (for eg 9563839843)
+  utter_faq_guide:
+  - text: 'Demo Note: Not just FAQs, this conversational approach can sell more services
+      to guests as well. Try asking what services are available in the hotel.'
+  utter_car_pick_guide:
+  - text: "Demo note: Similar to  this, bot can be trained to take any booking request.\
+      \ \n\n A written chat is reassuring to guests.  \n\n Once guest reach hotel,\
+      \ they have a ton of questions. Guests can chat with the bot at their own convenience.\
+      \ \n\n Our bot can answer many of these FAQs. For example, try asking about\
+      \ checkout time or wifi-password"
+  utter_welcome:
+  - text: "Hi \n\n Welcome to Hotel RiverView's Bot. I am here to assist you. \n\n\
+      \ Demo Note: This bot is trained to answer limited set of questions, it will\
+      \ guide you to understand its function and purpose.\n\n Imagine being a guest,\
+      \ landing on Airport of a new city and requesting a car pickup"
+  utter_ask_time_slot:
+  - buttons:
+    - payload: /inform{"time_slot":"Early morning"}
+      title: Early morning
+    - payload: /inform{"time_slot":"Late morning"}
+      title: Late morning
+    - payload: /inform{"time_slot":"Afternoon"}
+      title: Afternoon
+    text: Please choose a suitable time slot.
+  utter_ask_guest_number:
+  - text: How many guests should I reserve the session for? (Type a number between
+      1-9)
+  utter_ask_use_conf: 
+  - buttons:
+    - payload: /affirm{"use_conf":"Yes"}
+      title: "Most certainly Yes"
+    - payload: /affirm{"use_conf":"Yes"}
+      title: "Maybe, but I want to know more"  
+    - payload: /deny{"use_conf":"No"}
+      title: No, not interested
+    text: Would you want to explore a similar AI based chatbot for your business ?
+
+  utter_ask_user_email:
+  - text: Please share your business email ID, rest assured we do not spam.   
+
+  utter_wrong_visitor_email:
+  - text: That does not seem to be correct email ID.     
+  utter_thanks:
+  - text: "Thank you. Have a good day 😊 \n\n Team Sundaybots "
+
 actions:
 - respond_faq
 - utter_ask_PERSON
@@ -71,5 +171,24 @@ actions:
 - utter_wrong_car_type
 - action_default_ask_affirmation
 - utter_wrong_phone_number
+- utter_welcome
+- action_default_ask_affirmation
+- action_query_knowledge_base
+- utter_ok
+- utter_ask_rephrase
+- utter_default
+- utter_finish_guide
+- utter_wrong_guest_number
+- utter_wrong_time_slot
+- utter_faq_guide
+- utter_car_pick_guide
+- utter_ask_time_slot
+- utter_ask_guest_number
+- utter_wrong_visitor_email
+- utter_thanks
+- utter_ask_use_conf
+- utter_ask_user_email
 forms:
 - guest_pickup_form
+- golf_book_form
+- feedback_form

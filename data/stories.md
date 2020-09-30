@@ -1,40 +1,59 @@
 ## say goodbye
 * start
-  - utter_greet
+  - utter_welcome
 * goodbye
   - utter_goodbye
+
+## say hi
+* start
+  - utter_welcome
+* greet
+  - utter_greet 
 
 
 ## happychitchat
 * start
-  - utter_greet
+  - utter_welcome
+* greet
+  - utter_greet  
 * faq
   - respond_faq
 * faq  
   - respond_faq
+  - utter_faq_guide
 * goodbye
   - utter_goodbye
 
+
 ## happychitchat
 * start
-  - utter_greet
+  - utter_welcome
 * faq
   - respond_faq
+* faq  
+  - respond_faq
+  - utter_faq_guide  
 * goodbye
   - utter_goodbye
 
 ## happy_pickup_guest_form
 * start
-  - utter_greet
+  - utter_welcome
 * request_pickup_car
     - guest_pickup_form
     - form{"name": "guest_pickup_form"}
     - form{"name": null}
+    - utter_car_pick_guide
+* faq
+    - respond_faq
+* faq  
+    - respond_faq
+    - utter_faq_guide
 
 
 ## interactive_story_2
 * start
-    - utter_greet
+    - utter_welcome
 * request_pickup_car
     - guest_pickup_form
     - form{"name": "guest_pickup_form"}
@@ -63,10 +82,16 @@
     - slot{"car_type": "4 seater"}    
     - form{"name": null}
     - slot{"requested_slot": null}
+    - utter_car_pick_guide
+* faq
+    - respond_faq
+* faq  
+    - respond_faq
+    - utter_faq_guide
 
 ## interactive_story_2
 * start
-    - utter_greet
+    - utter_welcome
 * request_pickup_car
     - guest_pickup_form
     - form{"name": "guest_pickup_form"}
@@ -95,11 +120,17 @@
     - slot{"car_type": "6 seater"}    
     - form{"name": null}
     - slot{"requested_slot": null}
+    - utter_car_pick_guide
+* faq
+    - respond_faq
+* faq  
+    - respond_faq
+    - utter_faq_guide
 
 
 ## New Story
 * start
-    - utter_greet
+    - utter_welcome
 * request_pickup_car
     - guest_pickup_form
     - form{"name":"guest_pickup_form"}
@@ -125,11 +156,17 @@
     - guest_pickup_form
     - form{"name":null}
     - slot{"car_type":"4 seater"}
+    - utter_car_pick_guide
+* faq
+    - respond_faq
+* faq  
+    - respond_faq
+    - utter_faq_guide  
 
 
 ## New Story
 * start
-    - utter_greet
+    - utter_welcome
 * request_pickup_car
     - guest_pickup_form
     - form{"name":"guest_pickup_form"}
@@ -155,10 +192,16 @@
     - guest_pickup_form
     - form{"name":null}
     - slot{"car_type":"4 seater"}
+    - utter_car_pick_guide
+* faq
+    - respond_faq
+* faq  
+    - respond_faq
+    - utter_faq_guide
 
 ## New Story
 * start
-    - utter_greet
+    - utter_welcome
     - slot{"pickup_location":"airport"}
 * request_pickup_car{"pickup_location":"airport","pickup_time":"12 pm"}
     - slot{"pickup_location":"airport"}
@@ -178,10 +221,16 @@
     - guest_pickup_form
     - form{"name":null}
     - slot{"car_type":"6 seater"}
+    - utter_car_pick_guide
+* faq
+    - respond_faq
+* faq  
+    - respond_faq
+    - utter_faq_guide
 
 ## New Story
 * start
-    - utter_greet
+    - utter_welcome
     - slot{"pickup_location":"airport"}
 * request_pickup_car{"pickup_location":"airport"}
     - guest_pickup_form
@@ -203,10 +252,16 @@
     - guest_pickup_form
     - form{"name":null}
     - slot{"car_type":"6 seater"}
+    - utter_car_pick_guide
+* faq
+    - respond_faq
+* faq  
+    - respond_faq
+    - utter_faq_guide
 
 ## New Story
 * start
-    - utter_greet
+    - utter_welcome
     - slot{"pickup_location":"airport"}
 * request_pickup_car{"pickup_location":"airport"}
     - slot{"pickup_location":"airport"}
@@ -235,10 +290,11 @@
     - guest_pickup_form
     - form{"name":null}
     - slot{"car_type":"4 seater"}
+    - utter_car_pick_guide
 
 ## New Story
 * start
-    - utter_greet
+    - utter_welcome
     - slot{"pickup_location":"Bus Station"}
 * request_pickup_car{"pickup_location":"Bus Station"}
     - slot{"pickup_location":"Bus Station"}
@@ -267,10 +323,11 @@
     - guest_pickup_form
     - form{"name":null}
     - slot{"car_type":"4 seater"}
+    - utter_car_pick_guide
 
 ## New Story
 * start
-    - utter_greet
+    - utter_welcome
     - slot{"pickup_location":"Airport"}
 * request_pickup_car{"pickup_location":"Airport"}
     - slot{"pickup_location":"Airport"}
@@ -296,5 +353,179 @@
     - guest_pickup_form
     - form{"name":null}
     - slot{"car_type":"4 seater"}
+    - utter_car_pick_guide
 * faq
     - respond_faq
+
+
+## interactive_story_1
+* query_knowledge_base
+  - action_query_knowledge_base
+
+## interactive_story_1
+* query_knowledge_base
+  - slot{"object_type":"services"} 
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"description","services": "Golf"}  
+  - slot{"services": "Golf"}
+  - slot{"attribute": "description"}
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"price","services": "Golf"}  
+  - action_query_knowledge_base
+
+## interactive_story_1
+* query_knowledge_base
+  - slot{"object_type":"services"} 
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"description","services": "Golf"}  
+  - slot{"services": "Golf"}
+  - slot{"attribute": "description"}
+  - action_query_knowledge_base
+* faq
+  - respond_faq  
+* query_knowledge_base{"attribute":"price","services": "Golf"}  
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"book","services": "Golf"}  
+  - action_query_knowledge_base  
+  - golf_book_form
+  - form{"name": "golf_book_form"}
+  - form{"name": null} 
+  - feedback_form
+  - form{"name":"feedback_form"}
+  - form{"name": null}
+
+## interactive_story_1
+* query_knowledge_base
+  - slot{"object_type":"services"} 
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"description","services": "Golf"}  
+  - slot{"services": "Golf"}
+  - slot{"attribute": "description"}
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"price","services": "Golf"}  
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"book","mention":"it"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"object_type":"services"}
+    - golf_book_form
+    - form{"name":"golf_book_form"}
+    - form{"name": null} 
+    - feedback_form
+    - form{"name":"feedback_form"}
+    - form{"name": null}
+
+
+## New Story
+* start
+    - utter_welcome
+    - slot{"object_type":"services"}
+* query_knowledge_base{"object_type":"services"}
+    - slot{"object_type":"services"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"attribute":"description"}
+* query_knowledge_base{"attribute":"description","services":"Golf"}
+    - slot{"attribute":"description"}
+    - slot{"services":"Golf"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"attribute":"book"}
+* query_knowledge_base{"attribute":"book","mention":"it"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - golf_book_form
+    - form{"name":"golf_book_form"}
+    - form{"name": null} 
+    - feedback_form
+    - form{"name":"feedback_form"}
+    - form{"name": null}
+
+
+## interactive_story_1
+* query_knowledge_base
+  - slot{"object_type":"services"} 
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"description","services": "Spa Station"}  
+  - slot{"services": "Spa Station"}
+  - slot{"attribute": "description"}
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"price","services": "Spa Station"}  
+  - action_query_knowledge_base
+
+## interactive_story_1
+* query_knowledge_base
+  - slot{"object_type":"services"} 
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"description","services": "Spa Station"}  
+  - slot{"services": "Spa Station"}
+  - slot{"attribute": "description"}
+  - action_query_knowledge_base
+* faq
+  - respond_faq  
+* query_knowledge_base{"attribute":"price","services": "Spa Station"}  
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"book","mention":"it"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"object_type":"services"}
+    - golf_book_form
+    - form{"name":"golf_book_form"}
+    - form{"name": null} 
+    - feedback_form
+    - form{"name":"feedback_form"}
+    - form{"name": null}
+
+## interactive_story_1
+* query_knowledge_base
+  - slot{"object_type":"services"} 
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"description","services": "Swimming pool"}  
+  - slot{"services": "Swimming pool"}
+  - slot{"attribute": "description"}
+  - action_query_knowledge_base
+* faq
+  - respond_faq  
+* query_knowledge_base{"attribute":"price","services": "Swimming pool"}  
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"book","mention":"it"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"object_type":"services"}
+    - golf_book_form
+    - form{"name":"golf_book_form"}
+    - form{"name": null} 
+    - feedback_form
+    - form{"name":"feedback_form"}
+    - form{"name": null}
+
+## interactive_story_1
+* query_knowledge_base
+  - slot{"object_type":"services"} 
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"description","services": "Swimming pool"}  
+  - slot{"services": "Swimming pool"}
+  - slot{"attribute": "description"}
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"price","services": "Swimming pool"}  
+  - action_query_knowledge_base
+* query_knowledge_base{"attribute":"book","mention":"it"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"object_type":"services"}
+    - golf_book_form
+    - form{"name":"golf_book_form"}
+    - form{"name": null} 
+    - feedback_form
+    - form{"name":"feedback_form"}
+    - form{"name": null}

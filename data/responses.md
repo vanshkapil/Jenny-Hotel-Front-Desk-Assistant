@@ -26,18 +26,9 @@
 * faq/ask_roomservice_lastorder
  - Our kitchens close at 11 PM 
 
-## ask_pool_there
-* faq/ask_pool_there
- - Pool services are available for guests. Please visit lower deck.
 
-## faq/bookpool
-* faq/bookpool
- - Sure, I can help you with that.
 
-## ask_pool_timings
-* faq/ask_pool_timings
- - Pool can be accessed between 7 AM to 6 PM. Please note proper swim wear is mandatory.  
+## faq/book
+* faq/book
+ - Sure, I can help you with that. 
 
-## faq/ask_whatservices
-* faq/ask_whatservices
-  - You can enjoy \n\n Swimming pool \n\n SPA \n\n Golf \n\n In room dining \n\n Business Center \n\n Fitness \n\n Please ask if you have any specific question about any of these.

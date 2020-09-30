@@ -101,6 +101,91 @@ class GuestPickupForm(FormAction):
         dispatcher.utter_message(text=txt)
         return []
 
+class GolfBookingForm(FormAction):
+
+    def name(self) -> Text:
+        """Unique identifier of the form"""
+
+        return "golf_book_form"
+
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        """A list of required slots that the form has to fill"""
+
+        return [
+            "PERSON","time_slot",
+            "guest_number"]
+
+    def slot_mappings(self) -> Dict[Text, Any]:
+        return {
+            "PERSON": [self.from_text()],
+            # "PERSON": self.from_entity(entity="PERSON",intent=["inform"]),
+            "time_slot": self.from_entity(entity="time_slot",intent=["inform"]),
+                "guest_number": [self.from_text()]
+                }
+
+    def timeslot_db(self) -> List[Text]:
+        """Database of supported car_types"""
+
+        return [
+            "Early Morning",
+            "Late Morning",
+            "Afternoon"
+        ]
+
+    def validate_car_type(
+        self,
+        value: Text,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> Dict[Text, Any]:
+        """Validate car type value."""
+
+        if value.lower() in self.timeslot_db():
+            # validation succeeded, set the value of the "car_type" slot to value
+            return {"time_slot": value}
+        else:
+            dispatcher.utter_message(template="utter_wrong_time_slot")
+            # validation failed, set this slot to None, meaning the
+            # user will be asked for the slot again
+            return {"time_slot": None}
+
+
+
+    def validate_guest_number(
+        self,
+        value: Text,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> Dict[Text, Any]:
+        """Validate phone value."""
+
+        # if re.match(r"^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$",value):
+        if re.match(r"^[1-9]$", value):
+            return {"guest_number": value}
+        else:
+            dispatcher.utter_message(template="utter_wrong_guest_number")
+            return {"guest_number": None}
+
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[Dict]:
+        """Define what the form has to do
+            after all required slots are filled"""
+        person = tracker.get_slot('PERSON')
+        time = tracker.get_slot('time_slot')
+        guest_num = tracker.get_slot('guest_number')
+        service = tracker.get_slot('services')
+        txt = " Your " + time + " session of "+ service+ " is reserved for " + guest_num + " guests, in the name of " + person + ". Please talk to our front desk for any further queries. "
+        dispatcher.utter_message(text=txt)
+        dispatcher.utter_message(template="utter_finish_guide")
+        return []
+
 class ActionDefaultAskAffirmation(Action):
     """Asks for an affirmation of the intent if NLU threshold is not met."""
 
@@ -189,6 +274,118 @@ class ActionDefaultAskAffirmation(Action):
             button_title = utterances[0] if len(utterances) > 0 else intent
 
         return button_title.format(**entities)
+
+
+class MyKnowledgeBaseAction(ActionQueryKnowledgeBase):
+    def __init__(self):
+        knowledge_base = InMemoryKnowledgeBase("./actions/data.json")
+
+        knowledge_base.set_representation_function_of_object(
+            "services", lambda obj: obj["name"] + " \n\n " + obj["description"]
+
+        )
+
+        super().__init__(knowledge_base)
+
+    def utter_attribute_value(self, dispatcher, object_name, attribute_name, attribute_value):
+
+        # take attribute value and extract image url embedded in {}
+        attribute_value_string = attribute_value.split('<{')
+        attribute_text = attribute_value_string[0]
+        try:
+            attribute_image = attribute_value_string[1].split('}>')[0]
+        except:
+            attribute_image = None
+
+        # this dictionary creates custom responses for different attributes
+        ans_repo = { "price": [attribute_text,attribute_image],
+                     "timings": [attribute_text,attribute_image],
+                     "description": [attribute_text,attribute_image],
+                     "book":[attribute_text,attribute_image]
+                    }
+        if attribute_value:
+
+            img = ans_repo[attribute_name][1]
+            msg = ans_repo[attribute_name][0]
+
+            dispatcher.utter_message(text=msg,image=img) #it won't send images if text attribute is not included
+        else:
+            dispatcher.utter_message(
+                "Did not find anything related to it for '{}'.".format(
+                    object_name
+                )
+            )
+        return []
+
+    def utter_objects(self, dispatcher, object_type, objects):
+        # type: (CollectingDispatcher, Text, List[Dict[Text, Any]]) -> None
+        """
+        Utters a response to the user that lists all found objects.
+        Args:
+            dispatcher: the dispatcher
+            object_type: the object type
+            objects: the list of objects
+        """
+        if object_type == "services":
+            if objects:
+
+                button_list = []
+                for obj in objects:
+                    d = {'title': obj["name"],
+                         'payload': '/query_knowledge_base{"attribute":"description","services":"' + obj["name"] + '"}'}
+                    button_list.append(d)
+                    txt = "Here is the list of "+ object_type+' we have'
+                dispatcher.utter_message(text=txt, buttons=button_list)
+            else:
+                dispatcher.utter_message(
+                    "I could not find any services."
+                )
+
+class FeedbackForm(FormAction):
+
+    def name(self) -> Text:
+        """Unique identifier of the form"""
+
+        return "feedback_form"
+
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        """A list of required slots that the form has to fill"""
+
+        return ["use_conf","user_email"]
+
+    def slot_mappings(self) -> Dict[Text, Any]:
+        return {
+                "use_conf": [self.from_text()],
+            "user_email": self.from_entity(entity="user_email", intent=["inform"])
+                }
+
+    def validate_user_email(
+        self,
+        value: Text,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> Dict[Text, Any]:
+        """Validate email value."""
+
+        if re.match(r"[^@]+@[^@]+\.[^@]+",value):
+            return {"user_email": value}
+        else:
+            dispatcher.utter_message(template="utter_wrong_visitor_email")
+            return {"user_email": None}
+
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[Dict]:
+        """Define what the form has to do
+            after all required slots are filled"""
+        dispatcher.utter_message(template="utter_thanks")
+        return []
+
 
 # class SPAbook(FormAction):
 #

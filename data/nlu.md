@@ -1,4 +1,9 @@
 ## intent:start
+- start
+- START
+- Start
+
+## intent:greet
 - hey
 - hello
 - hi
@@ -81,6 +86,7 @@
 - whats the latest I can checkin
 - tell me checkin time
 - temme check in time
+- and checkin time
 - whats check in time
 
 ## intent:faq/ask_checkout_time
@@ -90,6 +96,7 @@
 - what is the latest checkout time
 - what is the last time I can move out
 - what is the last time I can check out
+- and check out time
 
 ## intent:faq/ask_roomservice_there
 - do you have room service
@@ -104,26 +111,6 @@
 - room service
 - roomservice
 
-## intent:faq/ask_whatservices
-- What services are there in the hotel
-- what is there to do in your hotel
-- what services do you provide
-- tell me about your services
-- what facilities are available 
-- what other services are there
-- What services do you provide at the hotel?
-- What are the services we have at hotels?
-- What services are you providing to hotel guests?
-- What services do you offer in hotel?
-- What kind of services does your hotel provide?
-- What would be the usual services at a hotel?
-
-## intent:faq/bookpool
-- I want to book pool session
-- book pool service for me
-- I want to go swimming
-- book pool for me
-- I want to use the pool
 
 ## intent:faq/ask_roomservice_lastorder
 - whats the last order time
@@ -131,15 +118,6 @@
 - whats the lastest I can order room service
 - last order
 
-## intent:faq/ask_pool_there
-- do you have a swimming pool
-- is there a pool
-
-## intent:faq/ask_pool_timings
-- what are the pool timings
-- is pool accessable now
-- what are timings of swimming pool
-- what time can i use the pool
 
 ## intent:request_pickup_car
 - I want a pickup car
@@ -158,6 +136,7 @@
 - Send a car to meet me at [airport](pickup_location)
 - Can someone send me a car to recieve me from [airport](pickup_location) ?
 - Send a car to [Airport](pickup_location) to recieve me.
+- hi, pick me up from [airport](pickup_location)
 
 ## intent:inform
 - my name is [Rob Smith](PERSON)
@@ -212,8 +191,62 @@
 - [9560844330](guest_phone_number)
 - [9760833530](guest_phone_number)
 - [9660367330](guest_phone_number)
-- Ben Stokes
-- David Hooks
+- [Ben Stokes](PERSON)
+- [David Hooks](PERSON)
+- [4](guest_number)
+- [2](guest_number)
+- [5](guest_number)
+- [1](guest_number)
+- [Early morning](time_slot)
+- [Late morning](time_slot)
+- [Afternoon](time_slot)
+- [vanshkapil@gmail.com](user_email)
+- [vansh@getsoothr.com](user_email)
+- [david@seapines.com](user_email)
+- [d.saker@marriot.com](user_email)
+
+
+## intent:query_knowledge_base
+- what [services]{"entity":"object_type","value":"services"} do you have ? 
+- Tell me about the [services]{"entity":"object_type","value":"services"} hotel provide
+- What [services]{"entity":"object_type","value":"services"} are there in the hotel
+- what is there [to do]{"entity":"object_type","value":"services"} in your hotel
+- what [services]{"entity":"object_type","value":"services"} do you provide
+- tell me about your [services]{"entity":"object_type","value":"services"}
+- what [facilities]{"entity":"object_type","value":"services"} are available 
+- what other [services]{"entity":"object_type","value":"services"} are there
+- What [services]{"entity":"object_type","value":"services"} do you provide at the hotel?
+- What are the [services]{"entity":"object_type","value":"services"} we have at hotels?
+- What [services]{"entity":"object_type","value":"services"} are you providing to hotel guests?
+- What [services]{"entity":"object_type","value":"services"} do you offer in hotel?
+- What kind of [services]{"entity":"object_type","value":"services"} does your hotel provide?
+- What would be the usual [services]{"entity":"object_type","value":"services"} at a hotel?
+- what is the [price]{"entity":"attribute","value":"price"} of a [SPA]{"entity":"services", "value":"Spa Station"} session?
+- how much does a session of [spa]{"entity":"services", "value":"Spa Station"} [cost]{"entity":"attribute","value":"price"} ?
+- what's the [price]{"entity":"attribute","value":"price"}
+- What are the [pool]{"entity":"services", "value":"Swimming pool"} [timings]{"entity":"attribute","value":"timings"}?
+- whats the opening [time]{"entity":"attribute","value":"timings"} of [Golf]{"entity":"services", "value":"Golf"}?
+- what are the [charges]{"entity":"attribute","value":"price"}?
+- how much do you [charge]{"entity":"attribute","value":"price"} for a session of [golf]{"entity":"services", "value":"Golf"}?
+- show me [pictures]{"entity":"attribute","value":"image"} of your [pool]{"entity":"services", "value":"Swimming pool"}
+- ok, [book]{"entity":"attribute","value":"book"} [it](mention)
+- [reserve]{"entity":"attribute","value":"book"} a [golf]{"entity":"services", "value":"Golf"} session 
+- how to [reserve]{"entity":"attribute","value":"book"} a session of [Golf]{"entity":"services", "value":"Golf"}
+- I want to [book]{"entity":"attribute","value":"book"} [it](mention) for [4](guest_number) people
+- What are the [spa]{"entity":"services", "value":"Spa Station"} [timings]{"entity":"attribute","value":"timings"}?
+- whats the opening [time]{"entity":"attribute","value":"timings"} of [spa]{"entity":"services", "value":"Spa Station"}?
+- What are the [spa]{"entity":"services", "value":"Spa Station"} [timings]{"entity":"attribute","value":"timings"}?
+- show me [pictures]{"entity":"attribute","value":"image"} of your [spa]{"entity":"services", "value":"Spa Station"}
+- [tell me]{"entity":"attribute","value":"description"} about your [spa]{"entity":"services", "value":"Spa Station"}
+- how do I [reserve]{"entity":"attribute","value":"book"} [it](mention)
+- [reserve]{"entity":"attribute","value":"book"} a [pool]{"entity":"services", "value":"Swimming pool"} session for me please
+- What are the [pool]{"entity":"services", "value":"Swimming pool"} [timings]{"entity":"attribute","value":"timings"}?
+
+## regex:visitor_email
+- [^@]+@[^@]+\.[^@]+
 
 ## regex:guest_phone_number
 - ^[6-9]\d{9}$
+
+## regex:guest_number
+- ^[1-9]$

@@ -45,7 +45,7 @@ tracker_store:
    type: SQL
    dialect: "sqlite"
    url: "sqlite:///./zuki.db"
-   db: "zuki.db"
+   db: "jenny.db"
    username: #<username used for authentication>
    password: #<password used for authentication>
 

@@ -1,0 +1,33 @@
+{ 
+	"services":
+	[ 
+		{
+			"id":0,
+			"name":"Swimming pool",
+			"description":"Swim and sunbathe with a priceless view. Towels are available for your use at the pool. Please check pool hours before visiting. \n\n You may ask for Price, Timings or Booking <{https://cf.bstatic.com/data/xphoto/1182x887/217/21776168.jpg}>",
+			"image":"https://cf.bstatic.com/data/xphoto/1182x887/217/21776168.jpg",
+			"timings":"Pool timings are 10-12:30 p.m., 1-3:30 p.m. & 4-6 p.m",
+			"price":"There are not charges for pool usage. Ask for booking.",
+			"book":"Sure, I can help you with that."
+		},
+
+		{
+			"id":1,
+			"name":"Golf",
+			"description":"Golfers describe golf on our golf courses, as a “Beautiful Challenge”, “A fun track with amazing views of the mountains”, and “Top notch service and unbeatable scenery no matter how you play.” A rolling 378 acres of championship greens wind around the lake, forests, and gardens. \n\n You may ask for Price, Timings or Booking <{https://images.squarespace-cdn.com/content/v1/557c64bae4b0fd931dc0fdf3/1434220561185-234QSDZN7EESVTROZCSG/ke17ZwdGBToddI8pDm48kFyD7pzB8zoMIVY5aiUuFlp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jG2lbcDYBOeMi4OFSYem8DMb5PTLoEDdB05UqhYu-xbnSznFxIRsaAU-3g5IaylIg/Hole+3.jpg}>",
+			"image":"https://images.squarespace-cdn.com/content/v1/557c64bae4b0fd931dc0fdf3/1434220561185-234QSDZN7EESVTROZCSG/ke17ZwdGBToddI8pDm48kFyD7pzB8zoMIVY5aiUuFlp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jG2lbcDYBOeMi4OFSYem8DMb5PTLoEDdB05UqhYu-xbnSznFxIRsaAU-3g5IaylIg/Hole+3.jpg",
+			"timings":"Early morning, Late morning, Afternoon Tee times are available. Check at booking.",
+			"price":"$95.00-$100.00",
+			"book":"Sure, I can help you with that."
+		},
+		{
+			"id":2,
+			"name":"Spa Station",
+			"description":"A TRANQUIL EXPERIENCE AWAITS. We are pleased to offer a selection of services for your enjoyment. Treatment times may be limited due to capacity guidelines in The Spa, so advance reservations are highly recommended. Take an hour or two to relax and rejuvenate with 10 treatment rooms and separate relaxation areas for men and women, each complete with lockers, steam room and sauna. \n\n You may ask for Price, Timings or Booking <{https://www.tajhotels.com/content/dam/tajhotels/in/en/jiva-spa/exotica.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg}>",
+			"image":"https://www.tajhotels.com/content/dam/tajhotels/in/en/jiva-spa/exotica.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+			"timings":"Sunday through Thursday: 9am-4pm \n\n Friday and Saturday: 9am-6pm",
+			"price":"Starts from $50.00. Ask for booking and details",
+			"book":"Sure, I can help you with that."
+		}
+	]
+}
