@@ -111,13 +111,11 @@
 - room service
 - roomservice
 
-
 ## intent:faq/ask_roomservice_lastorder
 - whats the last order time
 - when is the last order
 - whats the lastest I can order room service
 - last order
-
 
 ## intent:request_pickup_car
 - I want a pickup car
@@ -137,6 +135,7 @@
 - Can someone send me a car to recieve me from [airport](pickup_location) ?
 - Send a car to [Airport](pickup_location) to recieve me.
 - hi, pick me up from [airport](pickup_location)
+- I need a [4 seater](car_type) car to pick me up from [Airport](pickup_location)
 
 ## intent:inform
 - my name is [Rob Smith](PERSON)
@@ -205,48 +204,80 @@
 - [david@seapines.com](user_email)
 - [d.saker@marriot.com](user_email)
 
-
 ## intent:query_knowledge_base
-- what [services]{"entity":"object_type","value":"services"} do you have ? 
-- Tell me about the [services]{"entity":"object_type","value":"services"} hotel provide
-- What [services]{"entity":"object_type","value":"services"} are there in the hotel
-- what is there [to do]{"entity":"object_type","value":"services"} in your hotel
-- what [services]{"entity":"object_type","value":"services"} do you provide
-- tell me about your [services]{"entity":"object_type","value":"services"}
-- what [facilities]{"entity":"object_type","value":"services"} are available 
-- what other [services]{"entity":"object_type","value":"services"} are there
-- What [services]{"entity":"object_type","value":"services"} do you provide at the hotel?
-- What are the [services]{"entity":"object_type","value":"services"} we have at hotels?
-- What [services]{"entity":"object_type","value":"services"} are you providing to hotel guests?
-- What [services]{"entity":"object_type","value":"services"} do you offer in hotel?
-- What kind of [services]{"entity":"object_type","value":"services"} does your hotel provide?
-- What would be the usual [services]{"entity":"object_type","value":"services"} at a hotel?
-- what is the [price]{"entity":"attribute","value":"price"} of a [SPA]{"entity":"services", "value":"Spa Station"} session?
-- how much does a session of [spa]{"entity":"services", "value":"Spa Station"} [cost]{"entity":"attribute","value":"price"} ?
-- what's the [price]{"entity":"attribute","value":"price"}
-- What are the [pool]{"entity":"services", "value":"Swimming pool"} [timings]{"entity":"attribute","value":"timings"}?
-- whats the opening [time]{"entity":"attribute","value":"timings"} of [Golf]{"entity":"services", "value":"Golf"}?
-- what are the [charges]{"entity":"attribute","value":"price"}?
-- how much do you [charge]{"entity":"attribute","value":"price"} for a session of [golf]{"entity":"services", "value":"Golf"}?
-- show me [pictures]{"entity":"attribute","value":"image"} of your [pool]{"entity":"services", "value":"Swimming pool"}
-- ok, [book]{"entity":"attribute","value":"book"} [it](mention)
-- [reserve]{"entity":"attribute","value":"book"} a [golf]{"entity":"services", "value":"Golf"} session 
-- how to [reserve]{"entity":"attribute","value":"book"} a session of [Golf]{"entity":"services", "value":"Golf"}
-- I want to [book]{"entity":"attribute","value":"book"} [it](mention) for [4](guest_number) people
-- What are the [spa]{"entity":"services", "value":"Spa Station"} [timings]{"entity":"attribute","value":"timings"}?
-- whats the opening [time]{"entity":"attribute","value":"timings"} of [spa]{"entity":"services", "value":"Spa Station"}?
-- What are the [spa]{"entity":"services", "value":"Spa Station"} [timings]{"entity":"attribute","value":"timings"}?
-- show me [pictures]{"entity":"attribute","value":"image"} of your [spa]{"entity":"services", "value":"Spa Station"}
-- [tell me]{"entity":"attribute","value":"description"} about your [spa]{"entity":"services", "value":"Spa Station"}
-- how do I [reserve]{"entity":"attribute","value":"book"} [it](mention)
-- [reserve]{"entity":"attribute","value":"book"} a [pool]{"entity":"services", "value":"Swimming pool"} session for me please
-- What are the [pool]{"entity":"services", "value":"Swimming pool"} [timings]{"entity":"attribute","value":"timings"}?
+- what [services](object_type) do you have ?
+- Tell me about the [services](object_type) hotel provide
+- What [services](object_type) are there in the hotel
+- what is there [to do]{"entity": "object_type", "value": "services"} in your hotel
+- what [services](object_type) do you provide
+- tell me about your [services](object_type)
+- what [facilities]{"entity": "object_type", "value": "services"} are available
+- what other [services](object_type) are there
+- What [services](object_type) do you provide at the hotel?
+- What are the [services](object_type) we have at hotels?
+- What [services](object_type) are you providing to hotel guests?
+- What [services](object_type) do you offer in hotel?
+- What kind of [services](object_type) does your hotel provide?
+- What would be the usual [services](object_type) at a hotel?
+- what is the [price](attribute) of a [SPA]{"entity": "services", "value": "Spa Station"} session?
+- how much does a session of [spa]{"entity": "services", "value": "Spa Station"} [cost]{"entity": "attribute", "value": "price"} ?
+- what's the [price](attribute)
+- What are the [pool]{"entity": "services", "value": "Swimming pool"} [timings](attribute)?
+- whats the opening [time]{"entity": "attribute", "value": "timings"} of [Golf](services)?
+- what are the [charges]{"entity": "attribute", "value": "price"}?
+- how much do you [charge]{"entity": "attribute", "value": "price"} for a session of [golf]{"entity": "services", "value": "Golf"}?
+- show me [pictures]{"entity": "attribute", "value": "image"} of your [pool]{"entity": "services", "value": "Swimming pool"}
+- ok, [book](attribute) [it](mention)
+- [reserve]{"entity": "attribute", "value": "book"} a [golf]{"entity": "services", "value": "Golf"} session
+- how to [reserve]{"entity": "attribute", "value": "book"} a session of [Golf](services)
+- I want to [book](attribute) [it](mention) for [4](guest_number) people
+- What are the [spa]{"entity": "services", "value": "Spa Station"} [timings](attribute)?
+- whats the opening [time]{"entity": "attribute", "value": "timings"} of [spa]{"entity": "services", "value": "Spa Station"}?
+- show me [pictures]{"entity": "attribute", "value": "image"} of your [spa]{"entity": "services", "value": "Spa Station"}
+- [tell me]{"entity": "attribute", "value": "description"} about your [spa]{"entity": "services", "value": "Spa Station"}
+- how do I [reserve]{"entity": "attribute", "value": "book"} [it](mention)
+- [reserve]{"entity": "attribute", "value": "book"} a [pool]{"entity": "services", "value": "Swimming pool"} session for me please
 
-## regex:visitor_email
-- [^@]+@[^@]+\.[^@]+
+## synonym:Golf
+- golf
+
+## synonym:Spa Station
+- SPA
+- spa
+
+## synonym:Swimming pool
+- pool
+
+## synonym:book
+- reserve
+
+## synonym:description
+- tell me
+
+## synonym:image
+- pictures
+
+## synonym:price
+- cost
+- charges
+- charge
+
+## synonym:services
+- to do
+- facilities
+
+## synonym:timings
+- time
+
+## regex:car_type
+- 4 seater
+- 6 seater
+
+## regex:guest_number
+- ^[1-9]$
 
 ## regex:guest_phone_number
 - ^[6-9]\d{9}$
 
-## regex:guest_number
-- ^[1-9]$
+## regex:user_email
+- [^@]+@[^@]+\.[^@]+
