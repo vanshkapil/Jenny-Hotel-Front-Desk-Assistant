@@ -136,6 +136,16 @@
 - Send a car to [Airport](pickup_location) to recieve me.
 - hi, pick me up from [airport](pickup_location)
 - I need a [4 seater](car_type) car to pick me up from [Airport](pickup_location)
+- Do you have car for 4 people coming from [Airport](pickup_location)
+- is there a car available to pick us up
+- is there a car available 
+- do you provide a car pickup service 
+- do you have a cab service 
+- can you receive us from [Airport](pickup_location)
+- can you send someone to pick us up 
+- can you send a car to bring us to hotel 
+- bring us to hotel from [Airport](pickup_location)
+
 
 ## intent:inform
 - my name is [Rob Smith](PERSON)
