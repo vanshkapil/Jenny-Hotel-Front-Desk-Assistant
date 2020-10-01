@@ -137,6 +137,8 @@
 - Can someone send me a car to recieve me from [airport](pickup_location) ?
 - Send a car to [Airport](pickup_location) to recieve me.
 - hi, pick me up from [airport](pickup_location)
+- I need a [4 seater](car_type) car to pick me up from [airport](pickup_location)
+- I need a [6 seater](car_type) car to pick me up from [airport](pickup_location)
 
 ## intent:inform
 - my name is [Rob Smith](PERSON)
@@ -242,7 +244,7 @@
 - [reserve]{"entity":"attribute","value":"book"} a [pool]{"entity":"services", "value":"Swimming pool"} session for me please
 - What are the [pool]{"entity":"services", "value":"Swimming pool"} [timings]{"entity":"attribute","value":"timings"}?
 
-## regex:visitor_email
+## regex:user_email
 - [^@]+@[^@]+\.[^@]+
 
 ## regex:guest_phone_number
@@ -250,3 +252,7 @@
 
 ## regex:guest_number
 - ^[1-9]$
+
+## regex:car_type
+- 4 seater
+- 6 seater

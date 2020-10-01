@@ -529,3 +529,218 @@
     - feedback_form
     - form{"name":"feedback_form"}
     - form{"name": null}
+
+## New Story
+* start
+    - utter_welcome
+* start
+    - utter_welcome
+* greet
+    - utter_greet
+* request_pickup_car
+    - guest_pickup_form
+    - form{"name":"guest_pickup_form"}
+    - slot{"requested_slot":"PERSON"}
+* inform
+    - guest_pickup_form
+    - slot{"PERSON":"vansh"}
+    - slot{"requested_slot":"guest_phone_number"}
+* inform{"phone-number":"9874563211","number":9874563211,"guest_phone_number":"9874563211"}
+    - slot{"guest_phone_number":"9874563211"}
+    - slot{"guest_phone_number":"9874563211"}
+    - guest_pickup_form
+    - slot{"guest_phone_number":"9874563211"}
+    - slot{"requested_slot":"pickup_location"}
+* inform{"pickup_location":"airport"}
+    - slot{"pickup_location":"airport"}
+    - slot{"pickup_location":"airport"}
+    - guest_pickup_form
+    - slot{"pickup_location":"airport"}
+    - slot{"requested_slot":"pickup_time"}
+* inform{"time":"2020-10-01T13:00:00.000-07:00","PERSON":"tomorrow","pickup_time":"1 pm"}
+    - slot{"PERSON":"tomorrow"}
+    - slot{"pickup_time":"1 pm"}
+    - slot{"PERSON":"tomorrow"}
+    - slot{"pickup_time":"1 pm"}
+    - guest_pickup_form
+    - slot{"pickup_time":"tomorrow 1 pm"}
+    - slot{"requested_slot":"car_type"}
+* inform{"car_type":"4 seater"}
+    - slot{"car_type":"4 seater"}
+    - slot{"car_type":"4 seater"}
+    - guest_pickup_form
+    - slot{"car_type":"4 seater"}
+    - form{"name":null}
+    - slot{"requested_slot":null}
+    - utter_car_pick_guide
+* faq
+    - respond_faq
+* faq
+    - respond_faq
+    - utter_faq_guide
+* query_knowledge_base{"object_type":"services"}
+    - slot{"object_type":"services"}
+    - slot{"object_type":"services"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"mention":null}
+    - slot{"attribute":null}
+    - slot{"knowledge_base_last_object":null}
+    - slot{"knowledge_base_last_object_type":"services"}
+    - slot{"knowledge_base_listed_objects":[2,1,0]}
+* query_knowledge_base{"attribute":"description","services":"Golf"}
+    - slot{"attribute":"description"}
+    - slot{"services":"Golf"}
+    - slot{"attribute":"description"}
+    - slot{"services":"Golf"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"attribute":null}
+    - slot{"mention":null}
+    - slot{"knowledge_base_last_object":1}
+    - slot{"knowledge_base_last_object_type":"services"}
+* query_knowledge_base{"attribute":"timings"}
+    - slot{"attribute":"timings"}
+    - slot{"attribute":"timings"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"attribute":null}
+    - slot{"mention":null}
+    - slot{"knowledge_base_last_object":1}
+    - slot{"knowledge_base_last_object_type":"services"}
+* query_knowledge_base{"attribute":"book","mention":"it"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"attribute":null}
+    - slot{"mention":null}
+    - slot{"knowledge_base_last_object":1}
+    - slot{"knowledge_base_last_object_type":"services"}
+    - golf_book_form
+    - form{"name":"golf_book_form"}
+    - slot{"PERSON":"tomorrow"}
+    - slot{"requested_slot":"time_slot"}
+* inform{"time_slot":"Afternoon"}
+    - slot{"time_slot":"Afternoon"}
+    - slot{"time_slot":"Afternoon"}
+    - golf_book_form
+    - slot{"time_slot":"Afternoon"}
+    - slot{"requested_slot":"guest_number"}
+* inform{"number":1,"guest_number":"1"}
+    - slot{"guest_number":"1"}
+    - slot{"guest_number":"1"}
+    - golf_book_form
+    - slot{"guest_phone_number":"9874563211"}
+    - slot{"pickup_location":"airport"}
+    - slot{"PERSON":"tomorrow"}
+    - slot{"pickup_time":"1 pm"}
+    - slot{"car_type":"4 seater"}
+    - slot{"object_type":"services"}
+    - slot{"attribute":"description"}
+    - slot{"services":"Golf"}
+    - slot{"attribute":"timings"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - slot{"time_slot":"Afternoon"}
+    - slot{"guest_number":"1"}
+    - feedback_form
+    - form{"name":"feedback_form"}
+    - slot{"requested_slot":"use_conf"}
+* affirm{"use_conf":"Yes"}
+    - slot{"use_conf":"Yes"}
+    - feedback_form
+    - slot{"use_conf":"/affirm{\"use_conf\":\"Yes\"}"}
+    - slot{"requested_slot":"user_email"}
+* inform{"email":"vansh@gmail.com","user_email":"vansh@gmail.com"}
+    - slot{"user_email":"vansh@gmail.com"}
+    - feedback_form
+    - slot{"user_email":"vansh@gmail.com"}
+    - form{"name":null}
+    - slot{"requested_slot":null}
+
+## Story from conversation with ce05f2e87fa9473f90db24f1cbe95525 on September 30th 2020
+* start
+    - utter_welcome
+* query_knowledge_base{"object_type":"services"}
+    - slot{"object_type":"services"}
+    - slot{"object_type":"services"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"mention":null}
+    - slot{"attribute":null}
+    - slot{"knowledge_base_last_object":null}
+    - slot{"knowledge_base_last_object_type":"services"}
+    - slot{"knowledge_base_listed_objects":[1,0,2]}
+* query_knowledge_base{"attribute":"description","services":"Swimming pool"}
+    - slot{"attribute":"description"}
+    - slot{"services":"Swimming pool"}
+    - slot{"attribute":"description"}
+    - slot{"services":"Swimming pool"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"attribute":null}
+    - slot{"mention":null}
+    - slot{"knowledge_base_last_object":0}
+    - slot{"knowledge_base_last_object_type":"services"}
+* query_knowledge_base{"attribute":"timings"}
+    - slot{"attribute":"timings"}
+    - slot{"attribute":"timings"}
+    - action_query_knowledge_base
+    - slot{"object_type":"services"}
+    - slot{"attribute":null}
+    - slot{"mention":null}
+    - slot{"knowledge_base_last_object":0}
+    - slot{"knowledge_base_last_object_type":"services"}
+* query_knowledge_base{"attribute":"book","mention":"it"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - action_query_knowledge_base
+    - slot{"mention":null}
+    - slot{"object_type":"services"}
+    - golf_book_form
+    - form{"name":"golf_book_form"}
+    - slot{"requested_slot":"PERSON"}
+* inform
+    - golf_book_form
+    - slot{"PERSON":"vansh"}
+    - slot{"requested_slot":"time_slot"}
+* inform{"time_slot":"Late morning"}
+    - slot{"time_slot":"Late morning"}
+    - slot{"time_slot":"Late morning"}
+    - golf_book_form
+    - slot{"time_slot":"Late morning"}
+    - slot{"requested_slot":"guest_number"}
+* inform{"number":1,"guest_number":"1"}
+    - slot{"guest_number":"1"}
+    - slot{"guest_number":"1"}
+    - golf_book_form
+    - slot{"guest_number":"1"}
+    - form{"name":null}
+    - slot{"requested_slot":null}
+    - slot{"object_type":"services"}
+    - slot{"attribute":"description"}
+    - slot{"services":"Swimming pool"}
+    - slot{"attribute":"timings"}
+    - slot{"attribute":"book"}
+    - slot{"mention":"it"}
+    - slot{"time_slot":"Late morning"}
+    - slot{"guest_number":"1"}
+    - feedback_form
+    - form{"name":"feedback_form"}
+    - slot{"requested_slot":"use_conf"}
+* affirm{"use_conf":"Yes"}
+    - slot{"use_conf":"Yes"}
+    - feedback_form
+    - slot{"use_conf":"/affirm{\"use_conf\":\"Yes\"}"}
+    - slot{"requested_slot":"user_email"}
+* inform{"email":"vansh@gmail.com","user_email":"vansh@gmail.com"}
+    - slot{"user_email":"vansh@gmail.com"}
+    - feedback_form
+    - slot{"user_email":"vansh@gmail.com"}
+    - form{"name":null}
+    - slot{"requested_slot":null}
